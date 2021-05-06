@@ -8,7 +8,7 @@ public class HpBar : MonoBehaviour
     
     void Start()
     {
-        healthpoint.transform.localScale = new Vector3(0.5f, 1f);
+        healthpoint.transform.localScale = new Vector3(0.75f, 1f);
     }
 
     public void SetHp(float hpNormalized)
