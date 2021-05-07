@@ -9,7 +9,7 @@ public class Monster : Character
     {
         name = "버섯몬";
         MaxHP = 70;
-        currHP = 70;
+        currHP = 50;
         dmg = 20;
         def = 0;
     }

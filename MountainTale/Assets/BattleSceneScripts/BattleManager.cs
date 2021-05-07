@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public Character player;
+    public Character enemy;
+    
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            enemy.currHP = enemy.currHP - (player.dmg - enemy.def);
+        }
     }
 }

@@ -6,7 +6,7 @@ public class Player : Character
 {
     void Start()
     {
-        name = "킴철수";
+        name = "김철수";
         MaxHP = 100;
         currHP = 100;
         dmg = 30;
