@@ -7,7 +7,7 @@ public class BattleDialog : MonoBehaviour
 {
     public Text battletext;
 
-    public void SetDialog(string dialog)
+    public void PrintDialog(string dialog)
     {
         battletext.text = dialog;
     }

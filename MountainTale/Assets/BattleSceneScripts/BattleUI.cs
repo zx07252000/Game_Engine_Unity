@@ -19,9 +19,9 @@ public class BattleUI : MonoBehaviour
         SetData(character);
     }
 
-    public void SetData(Character crt)
+    public void SetData(Character character)
     {
-        name.text = crt.name;
-        hpBar.SetHp(crt.currHP / crt.MaxHP);
+        name.text = character.GetName();
+        hpBar.SetHp(character.GetCurHP() / character.GetMaxHp());
     }
 }

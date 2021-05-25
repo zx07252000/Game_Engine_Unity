@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public string name;
-    public float MaxHP;
-    public float currHP;
-    public int dmg;
-    public int def;
+    protected string name;
+    protected float MaxHP;
+    protected float curHP;
+    protected int STR;
+    protected int DEF;
 
     public string GetName() { return name; }
     public float GetMaxHp() { return MaxHP; }
-    public int GetDmg() { return dmg; }
-    public int GetDef() { return def; }
+    public float GetCurHP() { return curHP; }
+    public int GetSTR() { return STR; }
+    public int GetDEF() { return DEF; }
+
+    public void TakeDamage(int damage)
+    {
+        curHP -= (damage - DEF);
+
+        if(curHP <= 0) { curHP = 0; }
+    }
 }

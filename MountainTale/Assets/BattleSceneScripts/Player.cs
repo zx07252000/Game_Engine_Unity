@@ -8,8 +8,8 @@ public class Player : Character
     {
         name = "김철수";
         MaxHP = 100;
-        currHP = 100;
-        dmg = 30;
-        def = 10;
+        curHP = 100;
+        STR = 30;
+        DEF = 10;
     }
 }
