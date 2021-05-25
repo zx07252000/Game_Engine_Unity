@@ -2301,6 +2301,11 @@ MonoBehaviour:
   player: {fileID: 2108025694}
   enemy: {fileID: 1247312157}
   dialog: {fileID: 444507219}
+  buttons:
+  - {fileID: 546141469}
+  - {fileID: 1019952234}
+  - {fileID: 1639115828}
+  - {fileID: 1963131486}
 --- !u!4 &2015131357
 Transform:
   m_ObjectHideFlags: 0
