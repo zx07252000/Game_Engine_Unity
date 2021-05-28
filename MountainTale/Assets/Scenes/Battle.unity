@@ -560,7 +560,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2015131356}
         m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: BT_Attack_Clicked
+        m_MethodName: BT_Attack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1092,7 +1092,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2015131356}
         m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: BT_DoubleAttack_Clicked
+        m_MethodName: BT_DoubleAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1771,6 +1771,7 @@ GameObject:
   - component: {fileID: 1432075555}
   - component: {fileID: 1432075557}
   - component: {fileID: 1432075556}
+  - component: {fileID: 1432075558}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -1835,6 +1836,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432075554}
   m_CullTransparentMesh: 1
+--- !u!95 &1432075558
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432075554}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63089643c712f0d409b1c65c9db01bc4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1542007667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,7 +2019,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2015131356}
         m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: BT_Slash_Clicked
+        m_MethodName: BT_Slash
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2332,6 +2352,7 @@ GameObject:
   - component: {fileID: 2108025693}
   - component: {fileID: 2108025692}
   - component: {fileID: 2108025694}
+  - component: {fileID: 2108025695}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2408,3 +2429,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8b984479b467946909b9641fef470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2108025695
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108025690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b95265f99b6d90e438df1308a89c8bab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -10,7 +10,7 @@ public class Monster : Character
         name = "버섯몬";
         MaxHP = 70;
         curHP = 70;
-        STR = 20;
+        STR = 30;
         DEF = 10;
     }
 }

@@ -9,37 +9,39 @@ public class BattleManager : MonoBehaviour
     public Character enemy;
 
     public BattleDialog dialog;
-    public Button[] buttons = new Button[4];
+    public Button[] buttons;
 
-    private bool PlayerTurn;
+    private Animator playerAnim;
 
     void Start()
     {
-        PlayerTurnStart();
-        dialog.PrintDialog("당신의 턴!");
+        DisableButtons();
+
+        playerAnim = GetComponent<Animator>();
+
+        dialog.PrintDialog(enemy.GetName() + "이 나타났다!");
+
+
+        Invoke("PlayerTurn", 2.0f);
     }
 
-    void Update()
+    private void PlayerTurn()
     {
-        if(PlayerTurn == true)
-        {
-            EnableButtons();
-        }
-        else
-        {
-            DisableButtons();
-            dialog.PrintDialog(enemy.GetName() + "의 턴!");
+        EnableButtons();
 
-            Invoke("MonsterAttackDialog", 1.0f);
-            Invoke("Attack_MonsterToPlayer", 1.0f);
-
-            Invoke("PlayerTurnDialog", 1.0f);
-            PlayerTurnStart();
-        }
+        dialog.PrintDialog(player.GetName() + "의 턴!");
     }
 
-    private void PlayerTurnStart() { PlayerTurn = true; }
-    private void PlayerTurnEnd() { PlayerTurn = false; }
+    IEnumerator EnemyTurn()
+    {
+        MonsterAttackDialog();
+
+        yield return new WaitForSeconds(1);
+        Attack_MonsterToPlayer();
+
+        yield return new WaitForSeconds(1);
+        PlayerTurn();
+    }
 
     private void Attack_PlayerToMonster()
     {
@@ -73,35 +75,52 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void BT_Attack_Clicked()
+    public void BT_Attack() { StartCoroutine(BT_Attack_Clicked()); }
+    IEnumerator BT_Attack_Clicked()
     {
+        DisableButtons();
         dialog.PrintDialog(player.GetName() + "의 기본공격!");
+       
+        yield return new WaitForSeconds(1);
         Attack_PlayerToMonster();
 
-        Invoke("PlayerTurnEnd", 1.0f);
+        yield return new WaitForSeconds(1);
+        StartCoroutine(EnemyTurn());
     }
 
-    public void BT_DoubleAttack_Clicked()
+    public void BT_DoubleAttack() { StartCoroutine(BT_DoubleAttack_Clicked()); }
+    IEnumerator BT_DoubleAttack_Clicked()
     {
+        DisableButtons();
         dialog.PrintDialog(player.GetName() + "의 이단베기!");
-        Attack_PlayerToMonster();
-        Invoke("Attack_PlayerToMonster", 0.3f);
 
-        Invoke("PlayerTurnEnd", 1.0f);
+        yield return new WaitForSeconds(1);
+        Attack_PlayerToMonster();
+        yield return new WaitForSeconds(0.3f);
+        Attack_PlayerToMonster();
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine(EnemyTurn());
     }
 
-    public void BT_Slash_Clicked()
+    public void BT_Slash() { StartCoroutine(BT_Slash_Clicked()); }
+    IEnumerator BT_Slash_Clicked()
     {
+        DisableButtons();
         dialog.PrintDialog(player.GetName() + "의 슬래쉬!");
+
+        yield return new WaitForSeconds(1);
         Attack_PlayerToMonster();
         Attack_PlayerToMonster();
         Attack_PlayerToMonster();
 
-        Invoke("PlayerTurnEnd", 1.0f);
+        yield return new WaitForSeconds(1);
+        StartCoroutine(EnemyTurn());
     }
 
     public void BT_RunAway_Clicked()
     {
+        DisableButtons();
         dialog.PrintDialog(player.GetName() + "는 도망쳤다!");
     }
 }
