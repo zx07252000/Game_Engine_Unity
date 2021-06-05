@@ -12,5 +12,10 @@ public class Monster : Character
         curHP = 70;
         STR = 30;
         DEF = 10;
+
+        //SK_1 = 기본공격
+        //SK_1 = 방어
+        //SK_1 = 강화공격
+        //SK_1 = 필살기
     }
 }
