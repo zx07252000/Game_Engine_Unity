@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
 
     private float shakeLength;
     private float shakePower;
@@ -14,24 +14,27 @@ public class PlayerCamera : MonoBehaviour
 
     private void Start()
     {
-        shakeLength = 0;
-        shakePower = 0;
-        fadeTime = 0;
+        shakeLength = 0.0f;
+        shakePower = 0.0f;
+        fadeTime = 0.0f;
         camerMove = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ShakingCamera(0.5f, 0.2f);
-        }
-
         transform.position = new Vector3(player.transform.position.x,
                                          player.transform.position.y,
                                          player.transform.position.z - 10);
+        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ShakingCamera(0.5f, 0.1f);
+        }
+    }
 
-        if (shakeLength > 0)
+    private void LateUpdate()
+    {
+        if(shakeLength > 0)
         {
             shakeLength -= Time.deltaTime;
 
@@ -44,7 +47,7 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    private void ShakingCamera(float length, float power)
+    public void ShakingCamera(float length, float power)
     {
         shakeLength = length;
         shakePower = power;
