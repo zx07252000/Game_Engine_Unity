@@ -5,15 +5,41 @@ using UnityEngine;
 public class Skill : MonoBehaviour
 {
     protected string name;
-    protected float power;
-    protected int repeat;
+    protected int power;
 
     public string GetName()
     {
         return name;
     }
-    public float GiveDamage()
+}
+
+public class BaseAttack : Skill
+{
+    public BaseAttack(Character character)
     {
-        return power * repeat;
+        name = "기본 공격";
+        power = character.GetSTR();
+    }
+
+    IEnumerator Action(Character target)
+    {
+        target.TakeDamage(power);
+        yield return 0;
+    }
+}
+
+public class DoubleAttack : Skill
+{
+    public DoubleAttack(Character character)
+    {
+        name = "이단 공격";
+        power = character.GetSTR();
+    }
+
+    IEnumerator Action(Character target)
+    {
+        target.TakeDamage(power);
+        yield return new WaitForSeconds(0.3f);
+        target.TakeDamage(power);
     }
 }

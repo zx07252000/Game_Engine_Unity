@@ -27,4 +27,6 @@ public class Character : MonoBehaviour
 
         if(curHP <= 0) { curHP = 0; }
     }
+
+    public 
 }
