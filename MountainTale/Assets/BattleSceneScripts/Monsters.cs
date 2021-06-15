@@ -28,6 +28,21 @@ public class Skeleton : Character
         DEF = 0;
 
         SK_1 = new BaseAttack(this);
-        SK_2 = new DoubleAttack(this);
+        SK_2 = new ProportionalAttack(this, 20);
+    }
+}
+
+public class Slime : Character
+{
+    public Slime()
+    {
+        name = "ΩΩ∂Û¿”";
+        MaxHP = 30;
+        curHP = 30;
+        STR = 20;
+        DEF = 0;
+
+        SK_1 = new BaseAttack(this);
+        SK_2 = new PiercingAttack(this);
     }
 }

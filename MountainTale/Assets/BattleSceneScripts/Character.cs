@@ -23,10 +23,25 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //기본 피해: 체력 - (적 공격력 - 방어력)
         curHP -= (damage - DEF);
 
         if(curHP <= 0) { curHP = 0; }
     }
 
-    public 
+    public void TakePiercingDamage(int damage)
+    {
+        //방어무시 피해: 체력 - 적 공격력
+        curHP -= (damage);
+
+        if (curHP <= 0) { curHP = 0; }
+    }
+
+    public void TakeProportionalDamage(int percentage)
+    {
+        //체력비례 피해, damage(%) = 0~100
+        curHP -= MaxHP * (percentage / 100);
+
+        if (curHP <= 0) { curHP = 0; }
+    }
 }

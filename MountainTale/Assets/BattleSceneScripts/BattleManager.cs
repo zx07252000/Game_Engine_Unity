@@ -19,6 +19,12 @@ public class BattleManager : MonoBehaviour
 
         playerAnim = GetComponent<Animator>();
 
+        int probability = Random.Range(0, 10);
+
+        if (probability < 5) { enemy = new Mushroom(); }
+        else if (5 <= probability && probability < 7) { enemy = new Skeleton(); }
+        else if (7 <= probability && probability < 10) { enemy = new Slime(); }
+
         dialog.PrintDialog(enemy.GetName() + "ÀÌ ³ªÅ¸³µ´Ù!");
 
 
