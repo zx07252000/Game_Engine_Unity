@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ItemBox
   - BOX
+  - Inventory
+  - Start
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - Object
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Inventory
+  - HP
   - 
   - 
   - 

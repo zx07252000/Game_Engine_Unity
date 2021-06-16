@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MountainTale.unity
+    guid: 105e856d43f40c64bb1d4e96c38f0dba
+  - enabled: 1
+    path: Assets/Scenes/Stage2.unity
+    guid: cda14a94055aa274f95769a73d47e89a
+  - enabled: 1
+    path: Assets/Scenes/Stage3.unity
+    guid: 77730c05feb70c645a37b05583e88955
   m_configObjects: {}
