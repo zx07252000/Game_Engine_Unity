@@ -6,7 +6,7 @@ public class Skill : MonoBehaviour
 {
     protected string name;
 
-    protected int power;
+    protected float power;
     protected int percentage;
 
     public string GetName()
@@ -43,6 +43,21 @@ public class DoubleAttack : Skill
         target.TakeDamage(power);
         yield return new WaitForSeconds(0.3f);
         target.TakeDamage(power);
+    }
+}
+
+public class SlashAttack : Skill
+{
+    public SlashAttack(Character character)
+    {
+        name = "½½·¡½¬";
+        power = character.GetSTR();
+    }
+
+    IEnumerator Action(Character target)
+    {
+        target.TakeDamage( power * 1.5f );
+        yield return 0;
     }
 }
 
