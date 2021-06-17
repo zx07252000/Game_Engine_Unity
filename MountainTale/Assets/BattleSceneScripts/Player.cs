@@ -11,7 +11,5 @@ public class Player : Character
         curHP = 100;
         STR = 30;
         DEF = 10;
-
-        
     }
 }

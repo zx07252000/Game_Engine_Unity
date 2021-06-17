@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
-    protected Image image;
+    public RuntimeAnimatorController animator;
+    protected AnimationClip animClip;
     protected Sprite sprite;
-    protected Animator animator;
+
+    protected Transform transform;
 
     protected string name;
     protected float MaxHP;

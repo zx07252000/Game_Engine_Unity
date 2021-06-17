@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class BattleManager : MonoBehaviour
 {
     public Character player;
-    public Character enemy;
+    public Monster enemy;
 
     public BattleDialog dialog;
     public Button[] buttons;
 
     private Animator playerAnim;
+    private Animator enemyAnim;
 
     void Start()
     {
@@ -19,14 +20,17 @@ public class BattleManager : MonoBehaviour
 
         playerAnim = GetComponent<Animator>();
 
-        int probability = Random.Range(0, 10);
+        enemy.SetMonster(3);
 
-        if (probability < 5) { enemy = new Mushroom(); }
-        else if (5 <= probability && probability < 7) { enemy = new Skeleton(); }
-        else if (7 <= probability && probability < 10) { enemy = new Goblin(); }
+        //int probability = Random.Range(0, 10);
+        //if (probability < 5) { enemy = new Mushroom(); }
+        //else if (5 <= probability && probability < 7) { enemy = new Skeleton(); }
+        //else if (7 <= probability && probability < 10) { enemy = new Goblin(); }
 
         dialog.PrintDialog(enemy.GetName() + "ÀÌ ³ªÅ¸³µ´Ù!");
 
+        playerAnim = player.GetComponent<Animator>();
+        enemyAnim = enemy.GetComponent<Animator>();
 
         Invoke("PlayerTurn", 2.0f);
     }
@@ -51,11 +55,15 @@ public class BattleManager : MonoBehaviour
 
     private void Attack_PlayerToMonster()
     {
+        playerAnim.SetTrigger("BasicAttack");
         enemy.TakeDamage(player.GetSTR());
+        enemyAnim.SetTrigger("Damaged");
     }
     private void Attack_MonsterToPlayer()
     {
+        enemyAnim.SetTrigger("BasicAttack");
         player.TakeDamage(enemy.GetSTR());
+        playerAnim.SetTrigger("Damaged");
     }
     private void MonsterAttackDialog()
     {
@@ -102,7 +110,7 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Attack_PlayerToMonster();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1);
         Attack_PlayerToMonster();
 
         yield return new WaitForSeconds(1);
