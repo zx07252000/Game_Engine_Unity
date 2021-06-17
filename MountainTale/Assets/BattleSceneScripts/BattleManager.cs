@@ -23,13 +23,13 @@ public class BattleManager : MonoBehaviour
         //int probability = Random.Range(0, 5);
         int probability = 0;
 
-        if (probability == 0) { enemy.SetMonster(0); }          // ÀÌºí¾ÆÀÌ
-        else if (probability == 1) { enemy.SetMonster(1); }     // ¹ö¼¸
-        else if (probability == 2) { enemy.SetMonster(2); }     // °íºí¸°
-        else if (probability == 3) { enemy.SetMonster(3); }     // ½ºÄÌ·¹Åæ
-        else if (probability == 4) { enemy.SetMonster(4); }     // º¸½º
+        if (probability == 0) { enemy.SetMonster(0); }          // ï¿½Ìºï¿½ï¿½ï¿½ï¿½
+        else if (probability == 1) { enemy.SetMonster(1); }     // ï¿½ï¿½ï¿½ï¿½
+        else if (probability == 2) { enemy.SetMonster(2); }     // ï¿½ï¿½ï¿½
+        else if (probability == 3) { enemy.SetMonster(3); }     // ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½
+        else if (probability == 4) { enemy.SetMonster(4); }     // ï¿½ï¿½ï¿½ï¿½
 
-        dialog.PrintDialog(enemy.GetName() + "ÀÌ ³ªÅ¸³µ´Ù!");
+        dialog.PrintDialog(enemy.GetName() + "ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½!");
 
         playerAnim = player.GetComponent<Animator>();
         enemyAnim = enemy.GetComponent<Animator>();
@@ -41,12 +41,12 @@ public class BattleManager : MonoBehaviour
     {
         if (player.GetCurHP() <= 0)
         {
-            dialog.PrintDialog(player.GetName() + "´Â ¾²·¯Áö°í ¸»¾Ò´Ù...");
+            dialog.PrintDialog(player.GetName() + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò´ï¿½...");
             playerAnim.SetTrigger("Death");
         }
         else
         {
-            dialog.PrintDialog(player.GetName() + "ÀÇ ÅÏ!");
+            dialog.PrintDialog(player.GetName() + "ï¿½ï¿½ ï¿½ï¿½!");
 
             EnableButtons();
         }
@@ -57,7 +57,7 @@ public class BattleManager : MonoBehaviour
         if (enemy.GetCurHP() <= 0)
         {
             StopAllCoroutines();
-            dialog.PrintDialog(enemy.GetName() + "¸¦ ¾²·¯Æ®·È´Ù!");
+            dialog.PrintDialog(enemy.GetName() + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½È´ï¿½!");
             enemyAnim.SetTrigger("Death");
         }
         else
@@ -86,11 +86,11 @@ public class BattleManager : MonoBehaviour
     }
     private void MonsterAttackDialog()
     {
-        dialog.PrintDialog(enemy.GetName() + "ÀÇ ±âº»°ø°Ý!");
+        dialog.PrintDialog(enemy.GetName() + "ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½!");
     }
     private void PlayerTurnDialog()
     {
-        dialog.PrintDialog("´ç½ÅÀÇ ÅÏ!");
+        dialog.PrintDialog("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!");
     }
 
     private void EnableButtons()
@@ -112,10 +112,10 @@ public class BattleManager : MonoBehaviour
     IEnumerator BT_Attack_Clicked()
     {
         DisableButtons();
-        dialog.PrintDialog(player.GetName() + "ÀÇ ±âº»°ø°Ý!");
+        dialog.PrintDialog(player.GetName() + "ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½!");
        
         yield return new WaitForSeconds(1);
-        yield return new player.SK_1.Action(enemy);
+        //yield return new player.SK_1.Action(enemy);
         Attack_PlayerToMonster();
 
         yield return new WaitForSeconds(1);
@@ -126,7 +126,7 @@ public class BattleManager : MonoBehaviour
     IEnumerator BT_DoubleAttack_Clicked()
     {
         DisableButtons();
-        dialog.PrintDialog(player.GetName() + "ÀÇ ÀÌ´Üº£±â!");
+        dialog.PrintDialog(player.GetName() + "ï¿½ï¿½ ï¿½Ì´Üºï¿½ï¿½ï¿½!");
 
         yield return new WaitForSeconds(1);
         Attack_PlayerToMonster();
@@ -141,7 +141,7 @@ public class BattleManager : MonoBehaviour
     IEnumerator BT_Slash_Clicked()
     {
         DisableButtons();
-        dialog.PrintDialog(player.GetName() + "ÀÇ ½½·¡½¬!");
+        dialog.PrintDialog(player.GetName() + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 
         yield return new WaitForSeconds(1);
         Attack_PlayerToMonster();
@@ -155,6 +155,6 @@ public class BattleManager : MonoBehaviour
     public void BT_RunAway_Clicked()
     {
         DisableButtons();
-        dialog.PrintDialog(player.GetName() + "´Â µµ¸ÁÃÆ´Ù!");
+        dialog.PrintDialog(player.GetName() + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½!");
     }
 }

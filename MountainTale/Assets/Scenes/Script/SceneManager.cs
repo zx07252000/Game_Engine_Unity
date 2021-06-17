@@ -54,13 +54,10 @@ public class SceneManager : MonoBehaviour
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
 
-        GUILayout.Label("Are you Ready?! :)");
-
-        if (GUILayout.Button("Start!"))
-        {
-            isStarted = true;
-            StartGame();
-        }
+      
+        isStarted = true;
+        StartGame();
+        
 
         GUILayout.Space(100);
         GUILayout.FlexibleSpace();
@@ -68,36 +65,8 @@ public class SceneManager : MonoBehaviour
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
-    }
-
-        else if (isEnded && stageLevel == 3)
-        {
-            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
-            GUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            GUILayout.BeginVertical();
-            GUILayout.FlexibleSpace();
-
-            GUILayout.Label("Clear! :D");
-
-            if (GUILayout.Button("ReStart?"))
-            {
-                
-                isEnded = false;
-                stageLevel = 0;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(0, LoadSceneMode.Single);
-         
-
-            }
-
-            GUILayout.Space(100);
-            GUILayout.FlexibleSpace();
-            GUILayout.EndVertical();
-            GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
-            GUILayout.EndArea();
-
         }
+        
     }
     
 
@@ -114,20 +83,10 @@ public class SceneManager : MonoBehaviour
 
     public static void EndGame()
     {
-        Time.timeScale = 0f;
-
         stageLevel++;
-
-        if (stageLevel == 3)
-        {
-            isEnded = true;
-        }
-        else
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(stageLevel, LoadSceneMode.Single);
-            
-        }
-            
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene(stageLevel, LoadSceneMode.Single);
+        
     }
     
 }

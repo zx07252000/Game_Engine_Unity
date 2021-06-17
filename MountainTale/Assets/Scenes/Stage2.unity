@@ -316,6 +316,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a6d755429d2e04dba05b0850ded66a, type: 3}
+--- !u!1 &47431662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2421955547253937392, guid: b4a6d755429d2e04dba05b0850ded66a,
+    type: 3}
+  m_PrefabInstance: {fileID: 47431661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &260618818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3997491157282844016, guid: 2f88f9005e07c7542b59848efb1a714a,
@@ -458,6 +464,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage2
       objectReference: {fileID: 0}
+    - target: {fileID: 8975440051308639860, guid: aaf4f645d5fe6d4419d28aee9a91fb5f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf4f645d5fe6d4419d28aee9a91fb5f, type: 3}
 --- !u!1001 &1527898467
@@ -467,6 +478,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3997491157282843980, guid: 2f88f9005e07c7542b59848efb1a714a,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 2038115755}
+    - target: {fileID: 3997491157282843980, guid: 2f88f9005e07c7542b59848efb1a714a,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997491157282843980, guid: 2f88f9005e07c7542b59848efb1a714a,
+        type: 3}
+      propertyPath: inventoryPanel
+      value: 
+      objectReference: {fileID: 47431662}
     - target: {fileID: 3997491157282844016, guid: 2f88f9005e07c7542b59848efb1a714a,
         type: 3}
       propertyPath: m_Name
@@ -480,12 +506,12 @@ PrefabInstance:
     - target: {fileID: 3997491157282844019, guid: 2f88f9005e07c7542b59848efb1a714a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: 35.54
       objectReference: {fileID: 0}
     - target: {fileID: 3997491157282844019, guid: 2f88f9005e07c7542b59848efb1a714a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.85
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3997491157282844019, guid: 2f88f9005e07c7542b59848efb1a714a,
         type: 3}
@@ -648,3 +674,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600c50f448d26134ca100aa3e61af4c3, type: 3}
+--- !u!1 &2038115755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5088140216736299511, guid: 600c50f448d26134ca100aa3e61af4c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2038115754}
+  m_PrefabAsset: {fileID: 0}
