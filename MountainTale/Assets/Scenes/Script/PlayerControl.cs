@@ -110,11 +110,26 @@ public class PlayerControl : MonoBehaviour
         if (col.gameObject.tag == "BOX")
         {
             print("OnTriggerEnter2D");
-            Destroy(col.gameObject);
+            
+            //Destroy(col.gameObject);
         }
+    }
 
-        
-        
+    public void Hp_p()
+    {
+        nowHp += 50;
+    }
+    public void Attack_p()
+    {
+        Attack += 1;
+    }
+    public void Speed_p()
+    {
+        moveSpeed += 1;
+    }
+    public void Gage_p()
+    {
+        nowGage -= 20;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

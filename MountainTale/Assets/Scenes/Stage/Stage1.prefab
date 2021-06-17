@@ -1580,6 +1580,7 @@ GameObject:
   - component: {fileID: 3328239436647664251}
   - component: {fileID: 3328239436647664245}
   - component: {fileID: 3328239436647664244}
+  - component: {fileID: 1107436256099936383}
   m_Layer: 20
   m_Name: PF Props Crate Small
   m_TagString: Untagged
@@ -1643,7 +1644,7 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300038, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1671,7 +1672,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.8125, y: 1.21875}
+    oldSize: {x: 1, y: 0.96875}
     newSize: {x: 0.8125, y: 1.21875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1701,6 +1702,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1107436256099936383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328239436647664249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54fa42a78492c444a64916a297a9728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  Potion: []
 --- !u!1 &3328239437621352212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3816,9 +3831,10 @@ GameObject:
   - component: {fileID: 6315137055952188294}
   - component: {fileID: 6315137055952188289}
   - component: {fileID: 6315137055952188295}
+  - component: {fileID: 3691209440616350253}
   m_Layer: 20
   m_Name: PF Props Chest
-  m_TagString: Untagged
+  m_TagString: BOX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3916,6 +3932,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.93784136, y: 0.5620947}
   m_EdgeRadius: 0
+--- !u!114 &3691209440616350253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315137055952188288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54fa42a78492c444a64916a297a9728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  Potion:
+  - {fileID: 8624031932785663939, guid: 46ba4091a231eed4a8acefa8017dbe22, type: 3}
+  - {fileID: 8624031932785663939, guid: 03f600aed17aa334dad8abf4f01188e9, type: 3}
+  - {fileID: 8624031932785663939, guid: d38dcb717e4c33049a96990fc7b7a246, type: 3}
+  - {fileID: 8624031932785663939, guid: 0b0ddc327ec63d946b39ccd31a8550f9, type: 3}
 --- !u!1 &6638886730427706827
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,6 +5174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7929891815502958681}
   - component: {fileID: 7929891815502958680}
+  - component: {fileID: 4460139824871710445}
   - component: {fileID: 7929891815502958678}
   - component: {fileID: 7929891815502958679}
   m_Layer: 20
@@ -5216,6 +5251,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &4460139824871710445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929891815502958682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54fa42a78492c444a64916a297a9728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  Potion:
+  - {fileID: 4764492787204566468, guid: f540de32889740b45895cc9cf34ae2fd, type: 3}
+  - {fileID: 4764492787204566468, guid: 828cb8a16e172eb4a89fd8861960cad8, type: 3}
+  - {fileID: 4764492787204566468, guid: 528e1de4718921f4c80ce7335f142a31, type: 3}
+  - {fileID: 4764492787204566468, guid: 89c11e5178be5f947a3d857f428d5aaf, type: 3}
 --- !u!61 &7929891815502958678
 BoxCollider2D:
   m_ObjectHideFlags: 0
