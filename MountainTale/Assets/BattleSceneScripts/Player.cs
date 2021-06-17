@@ -11,6 +11,9 @@ public class Player : Character
         curHP = 100;
         STR = 30;
         DEF = 10;
+        MaxExp = 100;
+        curExp = 0;
+        Level = 1;
 
         SK_1 = new BaseAttack(this);
         SK_2 = new DoubleAttack(this);
