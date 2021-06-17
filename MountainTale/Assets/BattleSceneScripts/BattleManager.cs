@@ -18,7 +18,6 @@ public class BattleManager : MonoBehaviour
     private int probability;
 
     // 데이터 전달용
-    public int stage;
     private int result;
     private float pMHP;
     private float pHP;
@@ -38,9 +37,7 @@ public class BattleManager : MonoBehaviour
 
         playerAnim = GetComponent<Animator>();
 
-        stage = 1;
-
-        switch(stage)
+        switch(player.curStage)
         {
             case 1:
                 probability = Random.Range(0, 2);
@@ -262,7 +259,7 @@ public class BattleManager : MonoBehaviour
     {
         SaveData();
 
-        switch(stage)
+        switch(player.curStage)
         {
             case 1:
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MountainTale");
@@ -278,25 +275,13 @@ public class BattleManager : MonoBehaviour
 
     void SaveData()
     {
-        /*
-         * public int stage;
-    private int result;
-    private float pMHP;
-    private float pHP;
-    private float pSTR;
-    private float pDEF;
-    private float pLV;
-    private float pMEXP;
-    private float pEXP;
-    private float pPosX;
-    private float pPosY;
-         */
         PlayerPrefs.SetInt("Win", result);
         PlayerPrefs.SetFloat("MHP", player.GetMaxHp());
         PlayerPrefs.SetFloat("HP", player.GetCurHP());
         PlayerPrefs.SetFloat("STR", player.GetSTR());
         PlayerPrefs.SetFloat("DEF", player.GetDEF());
         PlayerPrefs.SetInt("LV", player.Level);
+        PlayerPrefs.SetInt("Stage", player.curStage);
         PlayerPrefs.SetFloat("MEXP", player.MaxExp);
         PlayerPrefs.SetFloat("EXP", player.curExp);
         PlayerPrefs.SetFloat("POSX", player.transform.position.x);

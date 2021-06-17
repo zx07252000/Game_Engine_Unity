@@ -84,7 +84,8 @@ public class SceneManager : MonoBehaviour
     public static void EndGame()
     {
         stageLevel++;
-        
+
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(stageLevel, LoadSceneMode.Single);
         
     }

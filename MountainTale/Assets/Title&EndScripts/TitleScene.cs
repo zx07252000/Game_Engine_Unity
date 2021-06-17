@@ -28,7 +28,7 @@ public class TitleScene : MonoBehaviour
 
     public void SceneChangeStart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Mountain Tale");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MountainTale");
     }
 
     public void SceneChangeExit()
