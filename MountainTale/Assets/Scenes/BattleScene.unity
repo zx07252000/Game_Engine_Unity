@@ -2355,6 +2355,7 @@ MonoBehaviour:
   - {fileID: 1019952234}
   - {fileID: 1639115828}
   - {fileID: 1963131486}
+  pData: {fileID: 6674361738412554809, guid: 21c74464676bf274f808ab88d90cf635, type: 3}
 --- !u!4 &2015131357
 Transform:
   m_ObjectHideFlags: 0
@@ -2491,6 +2492,7 @@ MonoBehaviour:
   SK_1: {fileID: 0}
   SK_2: {fileID: 0}
   SK_3: {fileID: 0}
+  pData: {fileID: 6674361738412554809, guid: 21c74464676bf274f808ab88d90cf635, type: 3}
 --- !u!95 &2108025695
 Animator:
   serializedVersion: 3

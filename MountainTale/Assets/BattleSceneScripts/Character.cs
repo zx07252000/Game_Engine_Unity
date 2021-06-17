@@ -80,4 +80,19 @@ public class Character : MonoBehaviour
         curExp -= MaxExp;
         MaxExp += 100;
     }
+
+    public void CheatHP()
+    {
+        MaxHP += 2000;
+        curHP += 2000;
+        DEF = 10;
+    }
+
+    public void PowerOverWhelming()
+    {
+        MaxHP += 2000;
+        curHP += 2000;
+        DEF = 10;
+        STR += 1000;
+    }
 }

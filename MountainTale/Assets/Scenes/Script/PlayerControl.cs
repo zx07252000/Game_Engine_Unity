@@ -17,7 +17,8 @@ public class PlayerControl : MonoBehaviour
     private Animator anim; // Animator
 
     Rigidbody2D rigid;
-    
+
+    private int loaded = 0;
     
     public GameObject player;
     public float Monster_Gage = 0;
@@ -50,7 +51,8 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        LoadData(); // 여기서 불러오는게 맞는건지 모르겠음..
+        //LoadData();
+        //LoadData(); // 여기서 불러오는게 맞는건지 모르겠음..
         rigid = GetComponent<Rigidbody2D>();
         // anim ���� ����
         anim = GetComponent<Animator>();
@@ -174,19 +176,25 @@ public class PlayerControl : MonoBehaviour
 
     void LoadData()
     {
-        // 전투씬 끝나고 되돌아올때 플레이어 정보들 불러옴, 전투씬->이동씬 전환 후 1회 호출
-        Attack = PlayerPrefs.GetFloat("STR");
-        nowHp = PlayerPrefs.GetFloat("HP");
-        maxHp = PlayerPrefs.GetFloat("MHP");
+        loaded = PlayerPrefs.GetInt("Loaded");
+        if (loaded == 1)
+        {
+            // 전투씬 끝나고 되돌아올때 플레이어 정보들 불러옴, 전투씬->이동씬 전환 후 1회 호출
+            Attack = PlayerPrefs.GetFloat("STR");
+            nowHp = PlayerPrefs.GetFloat("HP");
+            maxHp = PlayerPrefs.GetFloat("MHP");
 
-        pName = PlayerPrefs.GetString("Name");
-        DEF = PlayerPrefs.GetFloat("DEF");
-        MaxExp = PlayerPrefs.GetFloat("MEXP");
-        curExp = PlayerPrefs.GetFloat("EXP");
-        Level = PlayerPrefs.GetInt("LV");
+            pName = PlayerPrefs.GetString("Name");
+            DEF = PlayerPrefs.GetFloat("DEF");
+            MaxExp = PlayerPrefs.GetFloat("MEXP");
+            curExp = PlayerPrefs.GetFloat("EXP");
+            Level = PlayerPrefs.GetInt("LV");
 
-        // POSX, POSY 두개 불러와서 전투씬 넘어가기 전 플레이어 위치를 다시 불러옴
-        transform.position = new Vector3(PlayerPrefs.GetFloat("POSX"), PlayerPrefs.GetFloat("POSY"), 0);
+            // POSX, POSY 두개 불러와서 전투씬 넘어가기 전 플레이어 위치를 다시 불러옴
+            transform.position = new Vector3(PlayerPrefs.GetFloat("POSX"), PlayerPrefs.GetFloat("POSY"), 0);
+
+            loaded = 0;
+        }
     }
 
     void ChangeBattleScene()

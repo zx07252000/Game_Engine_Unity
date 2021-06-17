@@ -7,6 +7,8 @@ public class Player : Character
 {
     bool test;
 
+    public PlayerControl pData;
+
     void Start()
     {
         test = false;
@@ -25,7 +27,18 @@ public class Player : Character
         }
         else
         {
-            LoadData();
+            //LoadData();
+            name = pData.pName;
+            MaxHP = pData.maxHp;
+            curHP = pData.nowHp;
+            STR = pData.Attack;
+            DEF = pData.DEF;
+            MaxExp = pData.MaxExp;
+            curExp = pData.curExp;
+            Level = pData.Level;
+            curStage = pData.stage;
+            posX = pData.transform.position.x;
+            posY = pData.transform.position.y;
         }
 
         SK_1 = new BaseAttack(this);

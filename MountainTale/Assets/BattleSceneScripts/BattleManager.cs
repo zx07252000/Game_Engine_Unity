@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
     private float pPosX;
     private float pPosY;
 
+    public PlayerControl pData;
 
     void Start()
     {
@@ -65,6 +66,32 @@ public class BattleManager : MonoBehaviour
         enemyAnim = enemy.GetComponent<Animator>();
 
         Invoke("PlayerTurn", 2.0f);
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            player.CheatHP();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            player.PowerOverWhelming();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            enemy.CheatHP();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            enemy.PowerOverWhelming();
+        }
+
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            enemy.SetMonster(4);
+        }
+
     }
 
     private void PlayerTurn()
@@ -246,6 +273,7 @@ public class BattleManager : MonoBehaviour
         DisableButtons();
         player.TakeProportionalDamage(15);
         dialog.PrintDialog(player.GetName() + "´Â µµ¸ÁÃÆ´Ù!");
+        ChangeSceneStage();
     }
 
     void ChangeSceneEnd()
@@ -276,16 +304,27 @@ public class BattleManager : MonoBehaviour
     void SaveData()
     {
         PlayerPrefs.SetInt("Win", result);
-        PlayerPrefs.SetFloat("MHP", player.GetMaxHp());
-        PlayerPrefs.SetFloat("HP", player.GetCurHP());
-        PlayerPrefs.SetFloat("STR", player.GetSTR());
-        PlayerPrefs.SetFloat("DEF", player.GetDEF());
-        PlayerPrefs.SetInt("LV", player.Level);
-        PlayerPrefs.SetInt("Stage", player.curStage);
-        PlayerPrefs.SetFloat("MEXP", player.MaxExp);
-        PlayerPrefs.SetFloat("EXP", player.curExp);
-        PlayerPrefs.SetFloat("POSX", player.posX);
-        PlayerPrefs.SetFloat("POSY", player.posY);
-        PlayerPrefs.SetString("Name", player.GetName());
+        //PlayerPrefs.SetFloat("MHP", player.GetMaxHp());
+        //PlayerPrefs.SetFloat("HP", player.GetCurHP());
+        //PlayerPrefs.SetFloat("STR", player.GetSTR());
+        //PlayerPrefs.SetFloat("DEF", player.GetDEF());
+        //PlayerPrefs.SetInt("LV", player.Level);
+        //PlayerPrefs.SetInt("Stage", player.curStage);
+        //PlayerPrefs.SetFloat("MEXP", player.MaxExp);
+        //PlayerPrefs.SetFloat("EXP", player.curExp);
+        //PlayerPrefs.SetFloat("POSX", player.posX);
+        //PlayerPrefs.SetFloat("POSY", player.posY);
+        //PlayerPrefs.SetString("Name", player.GetName());
+
+        pData.pName = player.GetName();
+        pData.maxHp = player.GetMaxHp();
+        pData.nowHp = player.GetCurHP();
+        pData.Attack = player.GetSTR();
+        pData.DEF = player.GetDEF();
+        pData.MaxExp = player.MaxExp;
+        pData.curExp = player.curExp;
+        pData.Level = player.Level;
+        pData.stage = player.curStage;
+        pData.transform.position = new Vector3(player.posX, player.posY, 0);
     }
 }
