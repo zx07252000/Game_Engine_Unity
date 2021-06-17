@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6122084113603364943}
   - component: {fileID: 8697166123169180396}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85345332a6c9ae74c820aad6486f1b00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a38de2af0ebcd1d438398af9491043ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

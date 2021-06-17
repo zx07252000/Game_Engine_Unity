@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8624031932785663943}
   - component: {fileID: 8624031932785663938}
   m_Layer: 8
-  m_Name: HpPotion
+  m_Name: SpeedPotion
   m_TagString: ItemBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -44025399
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a38de2af0ebcd1d438398af9491043ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94d06af37f640cb46abbec58f544e4f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f125aab0e7b973246a6e8526a7d1a686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotItem: {fileID: 4764492787204566468, guid: 89c11e5178be5f947a3d857f428d5aaf,
+  slotItem: {fileID: 4764492787204566468, guid: 828cb8a16e172eb4a89fd8861960cad8,
     type: 3}
