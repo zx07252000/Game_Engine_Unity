@@ -21,10 +21,18 @@ public class PlayerControl : MonoBehaviour
     
     public GameObject player;
     public float Monster_Gage = 0;
-    public float Attack = 1;
+    public float Attack = 30;
     public float nowHp = 100;
     public float maxHp = 100;
     public float nowGage = 0;
+
+    public string pName = "플레이어";
+    public float DEF = 10;
+    public float MaxExp = 100;
+    public float curExp = 0;
+    public int Level = 1;
+
+    public int stage = 1;
 
     private RectTransform Gage_Bar;
 
@@ -42,6 +50,8 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        LoadData(); // 여기서 불러오는게 맞는건지 모르겠음..
+
         rigid = GetComponent<Rigidbody2D>();
         // anim ���� ����
         anim = GetComponent<Animator>();
@@ -84,7 +94,8 @@ public class PlayerControl : MonoBehaviour
         if (nowGage > 100.0f)
         {
             nowGage = 0.0f;
-            // 여기다 전투씬 대입
+            // 전투신으로 전환
+            ChangeBattleScene();
         }
         
         Vector3 InvenPos =
@@ -144,5 +155,45 @@ public class PlayerControl : MonoBehaviour
             SceneManager.EndGame();
         }
 
+    }
+
+    void SaveData()
+    {
+        // 플레이어 정보를 전투씬으로 넘겨줌
+        PlayerPrefs.SetFloat("MHP", maxHp);
+        PlayerPrefs.SetFloat("HP", nowHp);
+        PlayerPrefs.SetFloat("STR", Attack);
+        PlayerPrefs.SetFloat("DEF", DEF);
+        PlayerPrefs.SetFloat("MEXP", MaxExp);
+        PlayerPrefs.SetFloat("EXP", curExp);
+        PlayerPrefs.SetFloat("POSX", transform.position.x); // 플레이어가 현재 그려지고 있는 위치 posX
+        PlayerPrefs.SetFloat("POSY", transform.position.y); // 플레이어가 현재 그려지고 있는 위치 posY
+        PlayerPrefs.SetInt("LV", Level);
+        PlayerPrefs.SetInt("LV", Level);
+        PlayerPrefs.SetString("Name", pName);
+    }
+
+    void LoadData()
+    {
+        // 전투씬 끝나고 되돌아올때 플레이어 정보들 불러옴, 전투씬->이동씬 전환 후 1회 호출
+        Attack = PlayerPrefs.GetFloat("STR");
+        nowHp = PlayerPrefs.GetFloat("HP");
+        maxHp = PlayerPrefs.GetFloat("MHP");
+
+        pName = PlayerPrefs.GetString("Name");
+        DEF = PlayerPrefs.GetFloat("DEF");
+        MaxExp = PlayerPrefs.GetFloat("MEXP");
+        curExp = PlayerPrefs.GetFloat("EXP");
+        Level = PlayerPrefs.GetInt("LV");
+
+        // POSX, POSY 두개 불러와서 전투씬 넘어가기 전 플레이어 위치를 다시 불러옴
+        transform.position = new Vector3(PlayerPrefs.GetFloat("POSX"), PlayerPrefs.GetFloat("POSY"), 0);
+    }
+
+    void ChangeBattleScene()
+    {
+        SaveData(); // 씬 전환 전 정보 전달
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("BattleScene");
     }
 }

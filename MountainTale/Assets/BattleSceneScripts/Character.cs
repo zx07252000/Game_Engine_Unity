@@ -9,8 +9,6 @@ public class Character : MonoBehaviour
     protected AnimationClip animClip;
     protected Sprite sprite;
 
-    protected Transform transform;
-
     protected string name;
     protected float MaxHP;
     protected float curHP;
@@ -21,6 +19,10 @@ public class Character : MonoBehaviour
     public float MaxExp;
     public float curExp;
     public float reword;
+    public int curStage;
+
+    public float posX;
+    public float posY;
 
     public Skill SK_1;
     public Skill SK_2;
