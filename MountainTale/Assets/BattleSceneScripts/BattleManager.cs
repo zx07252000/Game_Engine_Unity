@@ -47,7 +47,7 @@ public class BattleManager : MonoBehaviour
         else if (probability == 3) { enemy.SetMonster(3); }     // 스켈레톤
         else if (probability == 4) { enemy.SetMonster(4); }     // 보스
 
-        dialog.PrintDialog(enemy.GetName() + "이 나타났다!");
+        dialog.PrintDialog(enemy.GetName() + "가 나타났다!");
 
         playerAnim = player.GetComponent<Animator>();
         enemyAnim = enemy.GetComponent<Animator>();
@@ -75,8 +75,10 @@ public class BattleManager : MonoBehaviour
         if (enemy.GetCurHP() <= 0)
         {
             StopAllCoroutines();
+
             dialog.PrintDialog(enemy.GetName() + "를 쓰러트렸다!");
             player.GetExp(enemy);
+
             enemyAnim.SetTrigger("Death");
         }
         else
@@ -178,11 +180,10 @@ public class BattleManager : MonoBehaviour
     IEnumerator BT_Attack_Clicked()
     {
         DisableButtons();
-        dialog.PrintDialog(player.GetName() + "의 기본공격!");
+        dialog.PrintDialog(player.GetName() + "의 공격!");
        
         yield return new WaitForSeconds(1);
         BasicAttack_PlayerToMonster();
-
         yield return new WaitForSeconds(1);
         StartCoroutine(EnemyTurn());
     }
@@ -191,7 +192,7 @@ public class BattleManager : MonoBehaviour
     IEnumerator BT_DoubleAttack_Clicked()
     {
         DisableButtons();
-        dialog.PrintDialog(player.GetName() + "의 이단베기!");
+        dialog.PrintDialog(player.GetName() + "의 이단공격!");
 
         yield return new WaitForSeconds(1);
         DoubleAttack_PlayerToMonster();

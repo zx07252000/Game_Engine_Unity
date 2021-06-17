@@ -2352,6 +2352,16 @@ PrefabInstance:
       objectReference: {fileID: 2083391943}
     - target: {fileID: 3997491157282843980, guid: 2f88f9005e07c7542b59848efb1a714a,
         type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 575638941}
+    - target: {fileID: 3997491157282843980, guid: 2f88f9005e07c7542b59848efb1a714a,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997491157282843980, guid: 2f88f9005e07c7542b59848efb1a714a,
+        type: 3}
       propertyPath: inventoryPanel
       value: 
       objectReference: {fileID: 1529251926}
