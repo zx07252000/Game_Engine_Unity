@@ -51,7 +51,6 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         LoadData(); // 여기서 불러오는게 맞는건지 모르겠음..
-
         rigid = GetComponent<Rigidbody2D>();
         // anim ���� ����
         anim = GetComponent<Animator>();

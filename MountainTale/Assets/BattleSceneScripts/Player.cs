@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -12,7 +13,7 @@ public class Player : Character
 
         if(test == true)
         {
-            name = "플레이어";
+            name = "테스트";
             MaxHP = 100;
             curHP = 100;
             STR = 30;
