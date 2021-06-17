@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -14,8 +15,22 @@ public class BattleManager : MonoBehaviour
     private Animator playerAnim;
     private Animator enemyAnim;
 
-    public int stage;
     private int probability;
+
+    // 데이터 전달용
+    public int stage;
+    private int result;
+    private float pMHP;
+    private float pHP;
+    private float pSTR;
+    private float pDEF;
+    private string name;
+    private int pLV;
+    private float pMEXP;
+    private float pEXP;
+    private float pPosX;
+    private float pPosY;
+
 
     void Start()
     {
@@ -61,6 +76,8 @@ public class BattleManager : MonoBehaviour
         {
             dialog.PrintDialog(player.GetName() + "는 쓰러지고 말았다...");
             playerAnim.SetTrigger("Death");
+            result = 0;
+            ChangeSceneEnd();
         }
         else
         {
@@ -80,6 +97,17 @@ public class BattleManager : MonoBehaviour
             player.GetExp(enemy);
 
             enemyAnim.SetTrigger("Death");
+
+            result = 1;
+
+            if(enemy.GetName() == "보스")
+            {
+                ChangeSceneEnd();
+            }
+            else
+            {
+                ChangeSceneStage();
+            }
         }
         else
         {
@@ -221,5 +249,58 @@ public class BattleManager : MonoBehaviour
         DisableButtons();
         player.TakeProportionalDamage(15);
         dialog.PrintDialog(player.GetName() + "는 도망쳤다!");
+    }
+
+    void ChangeSceneEnd()
+    {
+        SaveData();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
+    }
+
+    void ChangeSceneStage()
+    {
+        SaveData();
+
+        switch(stage)
+        {
+            case 1:
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MountainTale");
+                break;
+            case 2:
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Stage2");
+                break;
+            case 3:
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Stage3");
+                break;
+        }
+    }
+
+    void SaveData()
+    {
+        /*
+         * public int stage;
+    private int result;
+    private float pMHP;
+    private float pHP;
+    private float pSTR;
+    private float pDEF;
+    private float pLV;
+    private float pMEXP;
+    private float pEXP;
+    private float pPosX;
+    private float pPosY;
+         */
+        PlayerPrefs.SetInt("Win", result);
+        PlayerPrefs.SetFloat("MHP", player.GetMaxHp());
+        PlayerPrefs.SetFloat("HP", player.GetCurHP());
+        PlayerPrefs.SetFloat("STR", player.GetSTR());
+        PlayerPrefs.SetFloat("DEF", player.GetDEF());
+        PlayerPrefs.SetInt("LV", player.Level);
+        PlayerPrefs.SetFloat("MEXP", player.MaxExp);
+        PlayerPrefs.SetFloat("EXP", player.curExp);
+        PlayerPrefs.SetFloat("POSX", player.transform.position.x);
+        PlayerPrefs.SetFloat("POSY", player.transform.position.y);
+        PlayerPrefs.SetString("Name", player.GetName());
     }
 }
