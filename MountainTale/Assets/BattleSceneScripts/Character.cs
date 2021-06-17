@@ -17,10 +17,9 @@ public class Character : MonoBehaviour
     protected float STR;
     protected float DEF;
 
-    protected Skill SK_1;
-    protected Skill SK_2;
-    protected Skill SK_3;
-    protected Skill SK_4;
+    public Skill SK_1;
+    public Skill SK_2;
+    public Skill SK_3;
 
     public string GetName() { return name; }
     public float GetMaxHp() { return MaxHP; }

@@ -7,21 +7,21 @@ public class Monster : Character
 {
     public GameObject monster;
 
-    public Sprite spEye;
+    //public Sprite spEye;
     public RuntimeAnimatorController amEye;
-    public AnimationClip acEye;
+    //public AnimationClip acEye;
 
-    public Sprite spMushroom;
+    //public Sprite spMushroom;
     public RuntimeAnimatorController amMushroom;
-    public AnimationClip acMushroom;
+    //public AnimationClip acMushroom;
 
-    public Sprite spGoblin;
+    //public Sprite spGoblin;
     public RuntimeAnimatorController amGoblin;
-    public AnimationClip acGoblin;
+    //public AnimationClip acGoblin;
 
-    public Sprite spSkeleton;
+    //public Sprite spSkeleton;
     public RuntimeAnimatorController amSkeleton;
-    public AnimationClip acSkeleton;
+    //public AnimationClip acSkeleton;
 
 
     public void SetMonster(int type)
@@ -41,8 +41,7 @@ public class Monster : Character
                     SK_1 = new BaseAttack(this);
                     SK_2 = new PiercingAttack(this);
 
-                    animClip = acEye;
-                    sprite = spEye;
+                    animator = amEye;
                 }
                 break;
             case 1:
@@ -56,8 +55,7 @@ public class Monster : Character
                     SK_1 = new BaseAttack(this);
                     SK_2 = new DoubleAttack(this);
 
-                    animClip = acMushroom;
-                    sprite = spMushroom;
+                    animator = amMushroom;
                 }
                 break;
             case 2:
@@ -71,8 +69,7 @@ public class Monster : Character
                     SK_1 = new BaseAttack(this);
                     SK_2 = new PiercingAttack(this);
 
-                    animClip = acGoblin;
-                    sprite = spGoblin;
+                    animator = amGoblin;
                 }
                 break;
             case 3:
@@ -87,8 +84,6 @@ public class Monster : Character
                     SK_2 = new ProportionalAttack(this, 20);
 
                     animator = amSkeleton;
-                    animClip = acSkeleton;
-                    sprite = spSkeleton;
                 }
                 break;
         }

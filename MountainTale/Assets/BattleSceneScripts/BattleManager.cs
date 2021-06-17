@@ -20,12 +20,11 @@ public class BattleManager : MonoBehaviour
 
         playerAnim = GetComponent<Animator>();
 
-        enemy.SetMonster(3);
-
-        //int probability = Random.Range(0, 10);
-        //if (probability < 5) { enemy = new Mushroom(); }
-        //else if (5 <= probability && probability < 7) { enemy = new Skeleton(); }
-        //else if (7 <= probability && probability < 10) { enemy = new Goblin(); }
+        int probability = Random.Range(0, 4);
+        if (probability == 0) { enemy.SetMonster(0); }
+        else if (probability == 1) { enemy.SetMonster(1); }
+        else if (probability == 2) { enemy.SetMonster(2); }
+        else if (probability == 3) { enemy.SetMonster(3); }
 
         dialog.PrintDialog(enemy.GetName() + "이 나타났다!");
 
@@ -37,20 +36,37 @@ public class BattleManager : MonoBehaviour
 
     private void PlayerTurn()
     {
-        EnableButtons();
+        if (player.GetCurHP() <= 0)
+        {
+            dialog.PrintDialog(player.GetName() + "는 쓰러지고 말았다...");
+            playerAnim.SetTrigger("Death");
+        }
+        else
+        {
+            dialog.PrintDialog(player.GetName() + "의 턴!");
 
-        dialog.PrintDialog(player.GetName() + "의 턴!");
+            EnableButtons();
+        }
     }
 
     IEnumerator EnemyTurn()
     {
-        MonsterAttackDialog();
+        if (enemy.GetCurHP() <= 0)
+        {
+            dialog.PrintDialog(enemy.GetName() + "를 쓰러트렸다!");
+            enemyAnim.SetTrigger("Death");
+            StopAllCoroutines();
+        }
+        else
+        {
+            MonsterAttackDialog();
 
-        yield return new WaitForSeconds(1);
-        Attack_MonsterToPlayer();
+            yield return new WaitForSeconds(1);
+            Attack_MonsterToPlayer();
 
-        yield return new WaitForSeconds(1);
-        PlayerTurn();
+            yield return new WaitForSeconds(1);
+            PlayerTurn();
+        }
     }
 
     private void Attack_PlayerToMonster()
