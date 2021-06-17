@@ -9,9 +9,6 @@ public class Inventory : MonoBehaviour
     public GameObject player;
     public GameObject inventoryPanel;
     
-    //public bool[] fullCheck;
-    //public GameObject[] slots;
-
     public List<SlotData> _slots = new List<SlotData>();
     private int maxSlot = 4;
     public GameObject slotPrefab;
@@ -31,13 +28,4 @@ public class Inventory : MonoBehaviour
             _slots.Add(slot);
         }
     }
-
-    // Update is called once per frame
-    /*private void Update()
-    {
-        transform.position = new Vector3(player.transform.position.x-2,
-            player.transform.position.y-2,
-            player.transform.position.z );
-        
-    }*/
 }

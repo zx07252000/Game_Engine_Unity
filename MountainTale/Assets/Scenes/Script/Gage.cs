@@ -11,7 +11,6 @@ public class Gage : MonoBehaviour
         {
             GameObject.Find("Player").GetComponent<PlayerControl>().Gage_p();
             
-            
             Debug.Log("HP UP , SLOTNUMBER : "+(transform.parent.GetComponent<Slot>().num+1));
             Destroy(this.gameObject);
         }

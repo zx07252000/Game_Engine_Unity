@@ -13,18 +13,6 @@ public class Box : MonoBehaviour
     public GameObject box;
     public GameObject[] Potion;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-   
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")//tag로 줄일수있다.
