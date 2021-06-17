@@ -6,12 +6,17 @@ public class Skill : MonoBehaviour
 {
     protected string name;
 
-    protected float power;
+    protected Character owner;
     protected int percentage;
 
     public string GetName()
     {
         return name;
+    }
+
+    public virtual void Action(Character target)
+    {
+
     }
 }
 
@@ -20,13 +25,12 @@ public class BaseAttack : Skill
     public BaseAttack(Character character)
     {
         name = "기본 공격";
-        power = character.GetSTR();
+        owner = character;
     }
 
-    IEnumerator Action(Character target)
+    public override void Action(Character target)
     {
-        target.TakeDamage(power);
-        yield return 0;
+        target.TakeDamage(owner.GetSTR());
     }
 }
 
@@ -35,14 +39,12 @@ public class DoubleAttack : Skill
     public DoubleAttack(Character character)
     {
         name = "이단 공격";
-        power = character.GetSTR();
+        owner = character;
     }
 
-    IEnumerator Action(Character target)
+    public override void Action(Character target)
     {
-        target.TakeDamage(power);
-        yield return new WaitForSeconds(0.3f);
-        target.TakeDamage(power);
+        target.TakeDamage(owner.GetSTR() * 0.8f);
     }
 }
 
@@ -51,13 +53,12 @@ public class SlashAttack : Skill
     public SlashAttack(Character character)
     {
         name = "슬래쉬";
-        power = character.GetSTR();
+        owner = character;
     }
 
-    IEnumerator Action(Character target)
+    public override void Action(Character target)
     {
-        target.TakeDamage( power * 1.5f );
-        yield return 0;
+        target.TakeDamage(owner.GetSTR() * 1.5f );
     }
 }
 
@@ -66,27 +67,26 @@ public class PiercingAttack : Skill
     public PiercingAttack(Character character)
     {
         name = "관통 공격";
-        power = character.GetSTR();
+        owner = character;
     }
 
-    IEnumerator Action(Character target)
+    public override void Action(Character target)
     {
-        target.TakePiercingDamage(power);
-        yield return 0;
+        target.TakePiercingDamage(owner.GetSTR());
     }
 }
 
 public class ProportionalAttack : Skill
 {
-    public ProportionalAttack(Character character, int percentage)
+    public ProportionalAttack(Character character, int per)
     {
         name = "체력 비례 공격";
-        power = character.GetSTR();
+        owner = character;
+        percentage = per;
     }
 
-    IEnumerator Action(Character target)
+    public override void Action(Character target)
     {
-        target.TakePiercingDamage(percentage);
-        yield return 0;
+        target.TakeProportionalDamage(percentage);
     }
 }

@@ -14,14 +14,32 @@ public class BattleManager : MonoBehaviour
     private Animator playerAnim;
     private Animator enemyAnim;
 
+    public int stage;
+    private int probability;
+
     void Start()
     {
         DisableButtons();
 
         playerAnim = GetComponent<Animator>();
 
-        //int probability = Random.Range(0, 5);
-        int probability = 0;
+        stage = 1;
+
+        switch(stage)
+        {
+            case 1:
+                probability = Random.Range(0, 2);
+                break;
+            case 2:
+                probability = Random.Range(1, 3);
+                break;
+            case 3:
+                probability = Random.Range(2, 4);
+                break;
+            case 4:
+                probability = 4;
+                break;
+        }
 
         if (probability == 0) { enemy.SetMonster(0); }          // 이블아이
         else if (probability == 1) { enemy.SetMonster(1); }     // 버섯
@@ -58,35 +76,83 @@ public class BattleManager : MonoBehaviour
         {
             StopAllCoroutines();
             dialog.PrintDialog(enemy.GetName() + "를 쓰러트렸다!");
+            player.GetExp(enemy);
             enemyAnim.SetTrigger("Death");
         }
         else
         {
-            MonsterAttackDialog();
+            switch(enemy.ChooseSkill())
+            {
+                case 1:
+                    {
+                        MonsterAttackDialog(enemy.SK_1.GetName());
+                        yield return new WaitForSeconds(1);
+                        Skill1_MonsterToPlayer();
 
-            yield return new WaitForSeconds(1);
-            Attack_MonsterToPlayer();
+                    }
+                    break;
+                case 2:
+                    {
+                        MonsterAttackDialog(enemy.SK_2.GetName());
+                        yield return new WaitForSeconds(1);
+                        Skill2_MonsterToPlayer();
+                    }
+                    break;
+                case 3:
+                    {
+                        MonsterAttackDialog(enemy.SK_3.GetName());
+                        yield return new WaitForSeconds(1);
+                        Skill3_MonsterToPlayer();
+                    }
+                    break;
+            }
 
             yield return new WaitForSeconds(1);
             PlayerTurn();
         }
     }
 
-    private void Attack_PlayerToMonster()
+    private void BasicAttack_PlayerToMonster()
     {
         playerAnim.SetTrigger("BasicAttack");
-        enemy.TakeDamage(player.GetSTR());
+        player.SK_1.Action(enemy);
         enemyAnim.SetTrigger("Damaged");
     }
-    private void Attack_MonsterToPlayer()
+    private void DoubleAttack_PlayerToMonster()
+    {
+        playerAnim.SetTrigger("BasicAttack");
+        player.SK_2.Action(enemy);
+        enemyAnim.SetTrigger("Damaged");
+    }
+    private void SlashAttack_PlayerToMonster()
+    {
+        playerAnim.SetTrigger("BasicAttack");
+        player.SK_3.Action(enemy);
+        enemyAnim.SetTrigger("Damaged");
+    }
+
+    private void Skill1_MonsterToPlayer()
     {
         enemyAnim.SetTrigger("BasicAttack");
-        player.TakeDamage(enemy.GetSTR());
+        enemy.SK_1.Action(player);
         playerAnim.SetTrigger("Damaged");
     }
-    private void MonsterAttackDialog()
+    private void Skill2_MonsterToPlayer()
     {
-        dialog.PrintDialog(enemy.GetName() + "의 기본공격!");
+        enemyAnim.SetTrigger("Skill");
+        enemy.SK_2.Action(player);
+        playerAnim.SetTrigger("Damaged");
+    }
+    private void Skill3_MonsterToPlayer()
+    {
+        enemyAnim.SetTrigger("Skill2");
+        enemy.SK_3.Action(player);
+        playerAnim.SetTrigger("Damaged");
+    }
+
+    private void MonsterAttackDialog(string skName)
+    {
+        dialog.PrintDialog(enemy.GetName() + "의 " + skName + "!");
     }
     private void PlayerTurnDialog()
     {
@@ -115,8 +181,7 @@ public class BattleManager : MonoBehaviour
         dialog.PrintDialog(player.GetName() + "의 기본공격!");
        
         yield return new WaitForSeconds(1);
-        yield return new player.SK_1.Action(enemy);
-        Attack_PlayerToMonster();
+        BasicAttack_PlayerToMonster();
 
         yield return new WaitForSeconds(1);
         StartCoroutine(EnemyTurn());
@@ -129,9 +194,9 @@ public class BattleManager : MonoBehaviour
         dialog.PrintDialog(player.GetName() + "의 이단베기!");
 
         yield return new WaitForSeconds(1);
-        Attack_PlayerToMonster();
+        DoubleAttack_PlayerToMonster();
         yield return new WaitForSeconds(1);
-        Attack_PlayerToMonster();
+        DoubleAttack_PlayerToMonster();
 
         yield return new WaitForSeconds(1);
         StartCoroutine(EnemyTurn());
@@ -144,9 +209,7 @@ public class BattleManager : MonoBehaviour
         dialog.PrintDialog(player.GetName() + "의 슬래쉬!");
 
         yield return new WaitForSeconds(1);
-        Attack_PlayerToMonster();
-        Attack_PlayerToMonster();
-        Attack_PlayerToMonster();
+        SlashAttack_PlayerToMonster();
 
         yield return new WaitForSeconds(1);
         StartCoroutine(EnemyTurn());
@@ -155,6 +218,7 @@ public class BattleManager : MonoBehaviour
     public void BT_RunAway_Clicked()
     {
         DisableButtons();
+        player.TakeProportionalDamage(15);
         dialog.PrintDialog(player.GetName() + "는 도망쳤다!");
     }
 }

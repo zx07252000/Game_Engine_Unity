@@ -57,7 +57,7 @@ public class Monster : Character
                     reword = 30;
 
                     SK_1 = new BaseAttack(this);
-                    SK_2 = new DoubleAttack(this);
+                    SK_2 = new ProportionalAttack(this, 20);
 
                     animator = amMushroom;
                 }
@@ -87,7 +87,7 @@ public class Monster : Character
                     reword = 50;
 
                     SK_1 = new BaseAttack(this);
-                    SK_2 = new ProportionalAttack(this, 20);
+                    SK_2 = new SlashAttack(this);
 
                     animator = amSkeleton;
                 }
@@ -106,8 +106,8 @@ public class Monster : Character
                     reword = 100;
 
                     SK_1 = new BaseAttack(this);
-                    SK_2 = new PiercingAttack(this);
-                    SK_3 = new ProportionalAttack(this, 20);
+                    SK_2 = new SlashAttack(this);
+                    SK_3 = new ProportionalAttack(this, 25);
 
                     animator = amBoss;
                 }
@@ -116,6 +116,41 @@ public class Monster : Character
 
         monster.GetComponent<Animator>().runtimeAnimatorController = animator;
     }
+
+    public int ChooseSkill()
+    {
+        if(name == "º¸½º")
+        {
+            int probability = Random.Range(0, 11);
+
+            if (probability > 8)
+            {
+                return 3;
+            }
+            else if (probability > 4)
+            {
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            int probability = Random.Range(0, 10);
+
+            if (probability > 6)
+            {
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+    }
+
 }
 
 public class Mushroom : Character
