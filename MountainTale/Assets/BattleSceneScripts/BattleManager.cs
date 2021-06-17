@@ -284,8 +284,8 @@ public class BattleManager : MonoBehaviour
         PlayerPrefs.SetInt("Stage", player.curStage);
         PlayerPrefs.SetFloat("MEXP", player.MaxExp);
         PlayerPrefs.SetFloat("EXP", player.curExp);
-        PlayerPrefs.SetFloat("POSX", player.transform.position.x);
-        PlayerPrefs.SetFloat("POSY", player.transform.position.y);
+        PlayerPrefs.SetFloat("POSX", player.posX);
+        PlayerPrefs.SetFloat("POSY", player.posY);
         PlayerPrefs.SetString("Name", player.GetName());
     }
 }

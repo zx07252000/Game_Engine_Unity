@@ -1849,6 +1849,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  Level: 0
+  MaxExp: 0
+  curExp: 0
+  reword: 0
+  curStage: 0
+  posX: 0
+  posY: 0
   SK_1: {fileID: 0}
   SK_2: {fileID: 0}
   SK_3: {fileID: 0}
@@ -2474,6 +2481,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  Level: 0
+  MaxExp: 0
+  curExp: 0
+  reword: 0
+  curStage: 0
+  posX: 0
+  posY: 0
   SK_1: {fileID: 0}
   SK_2: {fileID: 0}
   SK_3: {fileID: 0}
