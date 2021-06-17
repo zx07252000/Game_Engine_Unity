@@ -17,6 +17,11 @@ public class Character : MonoBehaviour
     protected float STR;
     protected float DEF;
 
+    public int Level;
+    public float MaxExp;
+    public float curExp;
+    public float reword;
+
     public Skill SK_1;
     public Skill SK_2;
     public Skill SK_3;
@@ -49,5 +54,28 @@ public class Character : MonoBehaviour
         curHP -= MaxHP * (percentage / 100);
 
         if (curHP <= 0) { curHP = 0; }
+    }
+
+    public void GetExp(Character enemy)
+    {
+        curExp += enemy.reword;
+
+        if(curExp >= MaxExp)
+        {
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        Level += 1;
+
+        MaxHP += 20;
+        curHP += 20;
+        STR += 10;
+        DEF += 5;
+
+        curExp -= MaxExp;
+        MaxExp += 100;
     }
 }

@@ -23,6 +23,8 @@ public class Monster : Character
     public RuntimeAnimatorController amSkeleton;
     //public AnimationClip acSkeleton;
 
+    public RuntimeAnimatorController amBoss;
+
 
     public void SetMonster(int type)
     {
@@ -37,6 +39,7 @@ public class Monster : Character
                     curHP = 50;
                     STR = 20;
                     DEF = 0;
+                    reword = 20;
 
                     SK_1 = new BaseAttack(this);
                     SK_2 = new PiercingAttack(this);
@@ -51,6 +54,7 @@ public class Monster : Character
                     curHP = 80;
                     STR = 20;
                     DEF = 10;
+                    reword = 30;
 
                     SK_1 = new BaseAttack(this);
                     SK_2 = new DoubleAttack(this);
@@ -65,6 +69,7 @@ public class Monster : Character
                     curHP = 100;
                     STR = 30;
                     DEF = 20;
+                    reword = 40;
 
                     SK_1 = new BaseAttack(this);
                     SK_2 = new PiercingAttack(this);
@@ -79,6 +84,7 @@ public class Monster : Character
                     curHP = 150;
                     STR = 45;
                     DEF = 0;
+                    reword = 50;
 
                     SK_1 = new BaseAttack(this);
                     SK_2 = new ProportionalAttack(this, 20);
@@ -86,10 +92,29 @@ public class Monster : Character
                     animator = amSkeleton;
                 }
                 break;
+            case 4:
+                {
+                    RectTransform rct = GetComponent<RectTransform>();
+                    rct.anchoredPosition = new Vector2(-12, 173);
+                    monster.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+                    name = "보스";
+                    MaxHP = 200;
+                    curHP = 200;
+                    STR = 50;
+                    DEF = 20;
+                    reword = 100;
+
+                    SK_1 = new BaseAttack(this);
+                    SK_2 = new PiercingAttack(this);
+                    SK_3 = new ProportionalAttack(this, 20);
+
+                    animator = amBoss;
+                }
+                break;
         }
 
         monster.GetComponent<Animator>().runtimeAnimatorController = animator;
-        print("가나다라");
     }
 }
 

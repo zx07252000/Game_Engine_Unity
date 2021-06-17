@@ -20,11 +20,14 @@ public class BattleManager : MonoBehaviour
 
         playerAnim = GetComponent<Animator>();
 
-        int probability = Random.Range(0, 4);
-        if (probability == 0) { enemy.SetMonster(0); }
-        else if (probability == 1) { enemy.SetMonster(1); }
-        else if (probability == 2) { enemy.SetMonster(2); }
-        else if (probability == 3) { enemy.SetMonster(3); }
+        //int probability = Random.Range(0, 5);
+        int probability = 0;
+
+        if (probability == 0) { enemy.SetMonster(0); }          // 이블아이
+        else if (probability == 1) { enemy.SetMonster(1); }     // 버섯
+        else if (probability == 2) { enemy.SetMonster(2); }     // 고블린
+        else if (probability == 3) { enemy.SetMonster(3); }     // 스켈레톤
+        else if (probability == 4) { enemy.SetMonster(4); }     // 보스
 
         dialog.PrintDialog(enemy.GetName() + "이 나타났다!");
 
@@ -53,9 +56,9 @@ public class BattleManager : MonoBehaviour
     {
         if (enemy.GetCurHP() <= 0)
         {
+            StopAllCoroutines();
             dialog.PrintDialog(enemy.GetName() + "를 쓰러트렸다!");
             enemyAnim.SetTrigger("Death");
-            StopAllCoroutines();
         }
         else
         {
@@ -112,6 +115,7 @@ public class BattleManager : MonoBehaviour
         dialog.PrintDialog(player.GetName() + "의 기본공격!");
        
         yield return new WaitForSeconds(1);
+        yield return new player.SK_1.Action(enemy);
         Attack_PlayerToMonster();
 
         yield return new WaitForSeconds(1);

@@ -1857,6 +1857,7 @@ MonoBehaviour:
   amMushroom: {fileID: 9100000, guid: 3218626d26e184e4b99a419ec0623319, type: 2}
   amGoblin: {fileID: 9100000, guid: 26b96fdb744adb0499d7a6457a9a6f6f, type: 2}
   amSkeleton: {fileID: 9100000, guid: e83a6b072f936624a921248d608e8fde, type: 2}
+  amBoss: {fileID: 9100000, guid: f046b67d43abcff4a99f36312388808b, type: 2}
 --- !u!95 &1514629270
 Animator:
   serializedVersion: 3
